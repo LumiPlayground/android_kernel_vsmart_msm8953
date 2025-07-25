@@ -361,10 +361,14 @@ struct smb_charger {
 	struct delayed_work	uusb_otg_work;
 	struct delayed_work	bb_removal_work;
 	struct delayed_work	usbov_dbc_work;
+	struct delayed_work	period_update_work;
 
 	/* alarm */
 	struct alarm		moisture_protection_alarm;
 	struct alarm		chg_termination_alarm;
+
+	/* Vsmart changes */
+	int			input_abnormal;
 
 	/* pd */
 	int			voltage_min_uv;
@@ -597,6 +601,12 @@ int smblib_set_prop_pr_swap_in_progress(struct smb_charger *chg,
 int smblib_get_prop_from_bms(struct smb_charger *chg,
 				enum power_supply_property psp,
 				union power_supply_propval *val);
+// Begin Vsmart changes
+void smblib_check_valid_input(struct smb_charger *chg);
+int smblib_get_prop_from_usb(struct smb_charger *chg,
+				enum power_supply_property psp,
+				union power_supply_propval *val);
+// End Vsmart changes
 int smblib_stat_sw_override_cfg(struct smb_charger *chg, bool override);
 int smblib_configure_wdog(struct smb_charger *chg, bool enable);
 int smblib_force_vbus_voltage(struct smb_charger *chg, u8 val);
