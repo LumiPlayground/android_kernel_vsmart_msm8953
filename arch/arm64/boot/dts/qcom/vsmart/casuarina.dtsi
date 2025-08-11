@@ -1,0 +1,37 @@
+#include "vin8953-audio.dtsi"
+#include "vin8953-rmem.dtsi"
+#include "vin8953-battery.dtsi"
+#include "vin8953-thermal.dtsi"
+
+&mdss_dsi0_pll {
+	qcom,ssc-frequency-hz = <30000>;
+	qcom,ssc-ppm = <5000>;
+};
+
+&mdss_dsi1_pll {
+	qcom,ssc-frequency-hz = <30000>;
+	qcom,ssc-ppm = <5000>;
+};
+
+&pm8953_l6 {
+	regulator-always-on;
+};
+
+&pm8953_l10 {
+	regulator-always-on;
+};
+
+&soc {
+	pinctrl@1000000 {
+		/delete-node/ wsa_reset;
+	};
+
+	qcom,board_id {
+		compatible = "qcom,board_id";
+		board_id0_read = <&tlmm 90 0>;
+		board_id1_read = <&tlmm 91 0>;
+		board_id2_read = <&tlmm 92 0>;
+		board_id3_read = <&tlmm 93 0>;
+		status = "ok";
+	};
+};

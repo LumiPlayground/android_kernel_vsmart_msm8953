@@ -1,0 +1,21 @@
+&thermal_zones {
+	quiet-therm-step {
+		trips {
+			/delete-node/ quiet_batt-trip1;
+			/delete-node/ quiet_batt-trip2;
+			/delete-node/ quiet_batt-trip3;
+			/delete-node/ quiet_batt-trip4;
+
+			quiet_modem-trip2 {
+				temperature = <58000>;
+			};
+		};
+
+		cooling-maps {
+			/delete-node/ battery_lvl1;
+			/delete-node/ battery_lvl2;
+			/delete-node/ battery_lvl3;
+			/delete-node/ battery_lvl4;
+		};
+	};
+};

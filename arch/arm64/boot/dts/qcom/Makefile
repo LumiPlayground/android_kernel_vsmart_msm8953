@@ -1,3 +1,4 @@
+ifneq ($(CONFIG_MACH_VSMART),y)
 dtb-$(CONFIG_ARCH_QCOM)	+= apq8016-sbc.dtb msm8916-mtp.dtb
 dtb-$(CONFIG_ARCH_QCOM)	+= msm8996-mtp.dtb
 dtb-$(CONFIG_ARCH_QCOM)	+= apq8096-db820c.dtb
@@ -673,6 +674,21 @@ dtb-$(CONFIG_ARCH_SDM429) += sdm429-mtp.dtb \
 endif
 
 dtb-$(CONFIG_ARCH_SDM845_VM) += sdm845-vm.dtb
+else
+ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+	dtbo-$(CONFIG_MACH_VSMART_CASUARINA) += \
+		sdm450-qrd-sku4-casuarina-overlay.dtbo
+
+	dtbo-$(CONFIG_MACH_VSMART_PINE) += \
+		sdm450-qrd-sku4-pine-overlay.dtbo
+
+sdm450-qrd-sku4-casuarina-overlay.dtbo-base := sdm632-casuarina.dtb
+sdm450-qrd-sku4-pine-overlay.dtbo-base := sdm450-pmi632-pine.dtb
+endif
+
+dtb-$(CONFIG_MACH_VSMART_CASUARINA) += sdm632-casuarina.dtb
+dtb-$(CONFIG_MACH_VSMART_PINE) += sdm450-pmi632-pine.dtb
+endif
 
 always		:= $(dtb-y)
 subdir-y	:= $(dts-dirs)

@@ -1,0 +1,18 @@
+#include "vin8953-audio.dtsi"
+#include "vin8953-rmem.dtsi"
+#include "vin8953-battery.dtsi"
+#include "vin8953-thermal.dtsi"
+
+&pm8953_l6 {
+	regulator-always-on;
+};
+
+&pm8953_l10 {
+	regulator-always-on;
+};
+
+&soc {
+	pinctrl@1000000 {
+		/delete-node/ wsa_reset;
+	};
+};
