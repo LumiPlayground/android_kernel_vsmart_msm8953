@@ -1,0 +1,22 @@
+# Vsmart drivers
+
+config MACH_VSMART
+	bool "Vsmart board"
+	depends on ARCH_QCOM
+	help
+	 Say Y here if you want to support Vsmart boards.
+	 If unsure, say N.
+
+config MACH_VSMART_CASUARINA
+	bool "Vsmart Joy 3 / Joy 3+ NFC (casuarina)"
+	depends on MACH_VSMART
+	default n
+	help
+	 Vsmart Joy 3 / Joy 3+ NFC support.
+
+config MACH_VSMART_PINE
+	bool "Vsmart Joy 2+ (pine)"
+	depends on MACH_VSMART
+	default n
+	help
+	 Vsmart Joy 2+ support.
