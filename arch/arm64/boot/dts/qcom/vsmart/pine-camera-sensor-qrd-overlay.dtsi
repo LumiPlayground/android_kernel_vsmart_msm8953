@@ -110,12 +110,10 @@
 		cam_vio-supply = <&pm8953_l6>;
 		cam_vdig-supply = <&pm8953_l2>;
 		cam_vaf-supply = <&pm8953_l17>;
-		cam_vana-supply = <&pm8953_l22>;
-		qcom,cam-vreg-name = "cam_vio", "cam_vdig", "cam_vaf",
-						"cam_vana";
-		qcom,cam-vreg-min-voltage = <1800000 1050000 2800000 2800000>;
-		qcom,cam-vreg-max-voltage = <1800000 1050000 2800000 2800000>;
-		qcom,cam-vreg-op-mode = <0 105000 100000 80000>;
+		qcom,cam-vreg-name = "cam_vio", "cam_vdig", "cam_vaf";
+		qcom,cam-vreg-min-voltage = <1800000 1050000 2800000>;
+		qcom,cam-vreg-max-voltage = <1800000 1050000 2800000>;
+		qcom,cam-vreg-op-mode = <0 105000 100000>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk0_default
 				&cam_sensor_rear_default
@@ -124,13 +122,16 @@
 				&cam_sensor_rear_vana_sleep>;
 		gpios = <&tlmm 26 0>,
 			<&tlmm 40 0>,
+			<&tlmm 35 0>,
 			<&tlmm 134 0>;
 		qcom,gpio-reset = <1>;
-		qcom,gpio-vana = <2>;
-		qcom,gpio-req-tbl-num = <0 1 2>;
-		qcom,gpio-req-tbl-flags = <1 0 0>;
+		qcom,gpio-standby = <2>;
+		qcom,gpio-vana = <3>;
+		qcom,gpio-req-tbl-num = <0 1 2 3>;
+		qcom,gpio-req-tbl-flags = <1 0 0 0>;
 		qcom,gpio-req-tbl-label = "CAMIF_MCLK0",
 			"CAM_RESET0",
+			"CAM_STANDBY0",
 			"CAM_VANA0";
 		qcom,sensor-position = <0>;
 		qcom,sensor-mode = <0>;
@@ -150,12 +151,12 @@
 		qcom,csid-sd-index = <1>;
 		qcom,mount-angle = <90>;
 		cam_vdig-supply = <&pm8953_l23>;
-		cam_vio-supply = <&pm8953_l6>;
 		cam_vana-supply = <&pm8953_l22>;
+		cam_vio-supply = <&pm8953_l6>;
 		qcom,cam-vreg-name = "cam_vdig", "cam_vio", "cam_vana";
 		qcom,cam-vreg-min-voltage = <1200000 1800000 2800000>;
 		qcom,cam-vreg-max-voltage = <1200000 1800000 2800000>;
-		qcom,cam-vreg-op-mode = <1050000 0 80000>;
+		qcom,cam-vreg-op-mode = <200000 0 80000>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk2_default 
 				&cam_sensor_front_default>;
@@ -185,7 +186,7 @@
 		cell-index = <1>;
 		compatible = "qcom,camera";
 		reg = <0x01>;
-		qcom,csiphy-sd-index = <2>;
+		qcom,csiphy-sd-index = <1>;
 		qcom,csid-sd-index = <0>;
 		qcom,mount-angle = <270>;
 		qcom,eeprom-src = <&eeprom1>;

@@ -67,6 +67,13 @@
 		];
 		qcom,mdss-dsi-on-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-off-command-state = "dsi_lp_mode";
+		qcom,mdss-dsi-panel-timings-phy-v2 = <
+    0x1e1c0406 0x20304a0
+		0x1e1c0406 0x20304a0
+		0x1e1c0406 0x20304a0
+		0x1e1c0406 0x20304a0
+		0x1e0e0405 0x20304a0
+		>;
 		qcom,mdss-dsi-t-clk-post = <0x5>;
 		qcom,mdss-dsi-t-clk-pre = <0x17>;
 		qcom,mdss-dsi-h-sync-pulse = <1>;

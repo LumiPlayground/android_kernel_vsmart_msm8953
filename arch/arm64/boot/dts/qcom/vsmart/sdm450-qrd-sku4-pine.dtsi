@@ -15,6 +15,9 @@
 #include "msm8953-qrd-pine.dtsi"
 #include "../msm8953-mdss-panels.dtsi"
 
+#include "pine-qrd-sku4-camera-overlay.dtsi"
+#include "pine-camera-sensor-qrd-overlay.dtsi"
+
 &qusb_phy {
 	qcom,qusb-phy-init-seq = <0x78 0x80
 				0xb3 0x84
@@ -150,6 +153,12 @@
 	cd-gpios = <&tlmm 133 0x0>;
 };
 
+&pmi632_vadc {
+	chan@2a {
+		qcom,scale-function = <22>;
+	};
+};
+
 &soc {
 	gpio_keys {
 		camera_focus {
@@ -267,30 +276,4 @@
 &pmi632_charger {
 	qcom,thermal-mitigation = <4200000 3500000 3000000 2500000
 				2000000 1500000 1000000 500000>;
-};
-
-#include "pine-qrd-sku4-camera-overlay.dtsi"
-#include "pine-camera-sensor-qrd-overlay.dtsi"
-
-&pmi632_vadc {
-	chan@2a {
-		qcom,scale-function = <22>;
-	};
-};
-
-&pmi632_qg {
-	qcom,qg-iterm-ma = <330>;
-	qcom,ignore-shutdown-soc-secs = <1800>;
-	qcom,shutdown-temp-diff = <200>;
-	qcom,vbatt-cutoff-mv = <3450>;
-	qcom,vbatt-low-mv = <3550>;
-	qcom,vbatt-empty-mv = <3400>;
-};
-
-&pmi632_charger {
-	qcom,usb-icl-ua = <1700000>;
-	qcom,connector-internal-pull-kohm = <30>;
-	qcom,chg-term-src = <1>;
-	qcom,chg-term-current-ma = <(-300)>;
-	qcom,chg-term-base-current-ma = <(-100)>;
 };
